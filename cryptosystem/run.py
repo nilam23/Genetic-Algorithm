@@ -1,7 +1,7 @@
 import string
 import random
-from encryption import encrypt
-from decryption import decrypt
+from .encryption import encrypt
+from .decryption import decrypt
 
 EBCDIC_table = {
 	' ':64, '&':80, '#':123, '@':125,
@@ -45,15 +45,9 @@ def getKey():
 		randomString += random.choice(pool_of_letters)
 	return randomString.upper()
 
-def main():
-	# n = 4
+def getCipher(plainText):
 	# generating key text
-	# keyText = 'CRYPTOGRAPHY KEY'
 	keyText = getKey()
-
-	# the user message
-	# plainText = 'hello whats up'
-	plainText = input('Enter your message:')
 
 	# encrypting the message
 	if len(keyText) == len(plainText):
@@ -72,9 +66,12 @@ def main():
 			keyMatrix = generateKeyMatrix(keyText)
 			cipher = encrypt(keyMatrix, plainText)
 
+	return (cipher, keyMatrix)
 	# decrypting the cipher
-	decryptedText = decrypt(cipher, keyMatrix)
-	print(decryptedText)
-
-if __name__ == '__main__':
-	main()
+	# decryptedText = decrypt(cipher, keyMatrix)
+	# decryptedText = decryptedText.replace('#', '')
+	# if plainText.islower():
+	# 	decryptedText = decryptedText.lower()
+	# 	print(decryptedText)
+	# else:
+	# 	print(decryptedText)
