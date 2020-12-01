@@ -1,26 +1,7 @@
-EBCDIC_table = {
-	' ':64, '&':80, '#':123, '@':125,
-	'A':193, 'B':194, 'C':195, 'D':196,
-	'E':197, 'F':198, 'G':199, 'H':200,
-	'I':201, 'J':209, 'K':210, 'L':211,
-	'M':212, 'N':213, 'O':214, 'P':215,
-	'Q':216, 'R':217, 'S':226, 'T':227,
-	'U':228, 'V':229, 'W':230, 'X':231,
-	'Y':232, 'Z':233, '0':240, '1':241,
-	'2':242, '3':243, '4':244, '5':245,
-	'6':246, '7':247, '8':248, '9':249
-}
-
-Conversion_table = {
-	0:'#', 1:'A', 2:'B', 3:'C', 4:'D',
-	5:'E', 6:'F', 7:'G', 8:'H', 9:'I',
-	10:'J', 11:'K', 12:'L', 13:'M', 14:'N',
-	15:'O', 16:'P', 17:'Q', 18:'R', 19:'S',
-	20:'T', 21:'U', 22:'V', 23:'W', 24:'X',
-	25:'Y', 26:'Z', 27:'@', 28:'&', 29:'%', 30:'&'
-}
+from .transformationTables import get_EBCDIC_TABLE
 
 def generateTextMatrix(plainText):
+	EBCDIC_table = get_EBCDIC_TABLE()
 	keys = EBCDIC_table.keys()
 	ebcdic_codes = []
 	# generating EBCDIC equivalent for each character in the plain text
@@ -43,6 +24,7 @@ def invert(binary):
 	return binary.replace(binary[l-1:m], temp)
 
 def generateCipher(subtractiveMatrix):
+	EBCDIC_table = get_EBCDIC_TABLE()
 	keys = EBCDIC_table.keys()
 	# generating binary equivalent of each element of the subtractive matrix
 	binary_equivalent = []
