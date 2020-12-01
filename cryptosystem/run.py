@@ -67,11 +67,3 @@ def getCipher(plainText):
 			cipher = encrypt(keyMatrix, plainText)
 
 	return (cipher, keyMatrix)
-	# decrypting the cipher
-	# decryptedText = decrypt(cipher, keyMatrix)
-	# decryptedText = decryptedText.replace('#', '')
-	# if plainText.islower():
-	# 	decryptedText = decryptedText.lower()
-	# 	print(decryptedText)
-	# else:
-	# 	print(decryptedText)

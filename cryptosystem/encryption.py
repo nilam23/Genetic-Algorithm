@@ -1,5 +1,3 @@
-import sympy
-
 EBCDIC_table = {
 	' ':64, '&':80, '#':123, '@':125,
 	'A':193, 'B':194, 'C':195, 'D':196,
@@ -37,18 +35,6 @@ def generateSubtractiveMatrix(l1, l2):
 	for i, j in zipObject:
 		difference.append(i-j)
 	return difference
-
-def substitutionAlgorithm(matrix):
-	# a = sympy.randprime(0, 9)
-	# b = sympy.randprime(0, 9)
-	(a, b) = (5, 2)
-	keys = Conversion_table.keys()
-	intermediateCipher = ""
-	for x in matrix:
-		c = (a * x + b) % 31
-		if c in keys:
-			intermediateCipher = intermediateCipher + Conversion_table[c]
-	return intermediateCipher
 
 def invert(binary):
 	(l, m) = (3, 6)
